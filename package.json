@@ -1,0 +1,14 @@
+{
+  "name": "wbdv-su19-node-server",
+  "version": "1.0.0",
+  "description": "Node server for webdev",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mansi Kulkarni",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
