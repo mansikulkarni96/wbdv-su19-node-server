@@ -55,6 +55,21 @@ module.exports = function(app) {
 			universityDao.findAnswerById(req.params['aid'])
 		)	
 	}
+	function findAnswersByStudent(req, res){
+		res.json(
+			universityDao.findAnswersByStudent(req.params['sid'])
+		)
+	}
+	function findAnswersByQuestion(req, res){
+		res.json(
+			universityDao.findAnswersByQuestion(req.params['qid'])
+		)
+	}
+	function findAnswersByQidSid(req, res){
+		res.json(
+			universityDao.findAnswersByQidSid(req.params['sid'],req.params['qid'])
+		)
+	}
 	app.post("/api/students", createStudent);
 	app.delete("/api/students/:sid", deleteStudent);
 	app.get("/api/students", findAllStudents);
@@ -64,8 +79,13 @@ module.exports = function(app) {
 	app.get("/api/questions", findAllQuestions);
 	app.get("/api/questions/:qid", findQuestionById);
 	app.put("/api/questions/:qid", updateQuestion);
+	app.delete("/api/questions/:qid", deleteQuestion);
 	app.post("/api/student/:sid/question/:qid/answer",createAnswer);
 	app.get("/api/answers", findAllAnswers);
 	app.get("/api/answers/:aid", findAnswerById);
+	app.get("/api/students/:sid/answer", findAnswersByStudent);
+	app.get("/api/questions/:qid/answer", findAnswersByQuestion);
+	app.get("/api/student/:sid/question/:qid/answer", findAnswersByQidSid)
+	app.get("/api/question/:qid/student/:sid/answer", findAnswersByQidSid)
 
 }
