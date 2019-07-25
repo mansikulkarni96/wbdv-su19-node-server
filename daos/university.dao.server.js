@@ -54,15 +54,13 @@ function findAnswerById(aid) {
 	return answers.find(answer => answer._id == aid)
 }
 function findAnswersByStudent(sid){
-	return answers.find(answer => answer.student == sid)
+	return answers.filter(answer => answer.student === sid)
 }
 function findAnswersByQuestion(qid){
-	return answers.find(answer => answer.question == qid)
+	return answers.filter(answer => answer.question === qid)
 }
 function findAnswersByQidSid(sid, qid){
-	return answers.find(answer => answer.question == qid && answer.student == sid)
-	
-
+	return answers.filter(answer => answer.question == qid && answer.student == sid)
 }
 module.exports = {
 	createStudent,
