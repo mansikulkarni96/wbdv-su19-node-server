@@ -18,6 +18,7 @@ function findStudentById(sid) {
 }
 function updateStudent(sid, student) {
 	var index = students.findIndex(stud => stud._id === sid)
+	print(index);
 	students[index] = student
 	return students[index];
 }
