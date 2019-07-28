@@ -19,7 +19,7 @@ function findStudentById(sid) {
 function updateStudent(sid, student) {
 	var index = students.findIndex(stud => stud._id === sid)
 	students[index] = student
-	return students;
+	return students[index];
 }
 function createQuestion(question) {
 	questions.push(question);
@@ -39,7 +39,7 @@ function deleteQuestion(qid) {
 function updateQuestion(qid, question) {
 	var index = questions.findIndex(quest => quest._id === qid)
 	questions[index] = question
-	return questions;
+	return questions[index];
 }
 function createAnswer(sid, qid, answer){
 	answer['student'] = sid
