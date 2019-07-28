@@ -19,7 +19,7 @@ function findStudentById(sid) {
 function updateStudent(sid, student) {
 	var index = students.findIndex(stud => stud._id === sid)
 	students[index] = student
-	return students;
+	return students[index];
 }
 function createQuestion(question) {
 	questions.push(question);
