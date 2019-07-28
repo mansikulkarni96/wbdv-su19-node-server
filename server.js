@@ -22,4 +22,5 @@ var universityService = require(
 	'./services/university.service.server.js')
 universityService(app)
 
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
+
