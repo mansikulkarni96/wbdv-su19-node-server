@@ -19,7 +19,7 @@ module.exports = function(app) {
 	}
 	function updateStudent(req, res) {
 		var sid = req.params['sid'];
-		var student = request.body;
+		var student = req.body;
 		res.json(universityDao.updateStudent(sid, student))
 	}
 	function createQuestion(req, res) {
