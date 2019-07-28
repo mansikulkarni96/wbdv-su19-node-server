@@ -70,21 +70,21 @@ module.exports = function(app) {
 			universityDao.findAnswersByQidSid(req.params['sid'],req.params['qid'])
 		)
 	}
-	app.post("/api/students", createStudent);
-	app.delete("/api/students/:sid", deleteStudent);
-	app.get("/api/students", findAllStudents);
-	app.get("/api/students/:sid", findStudentById);
-	app.put("/api/students/:sid", updateStudent);
-	app.post("/api/questions", createQuestion);
-	app.get("/api/questions", findAllQuestions);
-	app.get("/api/questions/:qid", findQuestionById);
-	app.put("/api/questions/:qid", updateQuestion);
-	app.delete("/api/questions/:qid", deleteQuestion);
+	app.post("/api/student", createStudent);
+	app.delete("/api/student/:sid", deleteStudent);
+	app.get("/api/student", findAllStudents);
+	app.get("/api/student/:sid", findStudentById);
+	app.put("/api/student/:sid", updateStudent);
+	app.post("/api/question", createQuestion);
+	app.get("/api/question", findAllQuestions);
+	app.get("/api/question/:qid", findQuestionById);
+	app.put("/api/question/:qid", updateQuestion);
+	app.delete("/api/question/:qid", deleteQuestion);
 	app.post("/api/student/:sid/question/:qid/answer",createAnswer);
-	app.get("/api/answers", findAllAnswers);
-	app.get("/api/answers/:aid", findAnswerById);
-	app.get("/api/students/:sid/answer", findAnswersByStudent);
-	app.get("/api/questions/:qid/answer", findAnswersByQuestion);
+	app.get("/api/answer", findAllAnswers);
+	app.get("/api/answer/:aid", findAnswerById);
+	app.get("/api/student/:sid/answer", findAnswersByStudent);
+	app.get("/api/question/:qid/answer", findAnswersByQuestion);
 	app.get("/api/student/:sid/question/:qid/answer", findAnswersByQidSid)
 	app.get("/api/question/:qid/student/:sid/answer", findAnswersByQidSid)
 
