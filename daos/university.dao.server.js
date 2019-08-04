@@ -5,6 +5,7 @@ var answers = require('../data/answers.json');
 var studentModel = require('../models/student.model.server');
 var questionModel = require('../models/question.model.server');
 var answerModel = require('../models/answer.model.server');
+var quizWidgetModel = require('../models/quiz-widget.model.server')
 
 function createStudent(student) {
 	return studentModel.create(student)
@@ -86,6 +87,14 @@ function findAnswersByQidSid(sid, qid){
 	return answerModel.find({student: sid, question: qid})
 }
 
+function createQuizWidget(quizWidget){
+	return quizWidgetModel.create(quizWidget)
+}
+
+function removeAllQuizWidgets(){
+	return quizWidgetModel.deleteMany({}).exec()
+}
+
 module.exports = {
 	createStudent,
 	deleteStudent,
@@ -102,5 +111,7 @@ module.exports = {
 	findAnswerById,
 	findAnswersByStudent,
 	findAnswersByQuestion,
-	findAnswersByQidSid
+	findAnswersByQidSid,
+	createQuizWidget,
+	removeAllQuizWidgets
 };
