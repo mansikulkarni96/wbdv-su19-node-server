@@ -1,75 +1,122 @@
-module.exports = function(app) {
-	var universityDao = require('../daos/university.dao.server.js')
+var universityDao = require('../daos/university.dao.server.js')
+
+module.exports = function (app) {
+
+	console.log('student service server')
 
 	function createStudent(req, res) {
-		var student = req.body;
-		res.json(universityDao.createStudent(student))
+		var student = req.body
+		console.log(student)
+		universityDao
+			.createStudent(student)
+			.then(response => res.send(response))
 	}
-	function deleteStudent(req, res) {
-		var sid = req.params['sid'];
-		res.json(universityDao.deleteStudent(sid))
-	}
+
 	function findAllStudents(req, res) {
-		res.json(universityDao.findAllStudents());
+		console.log('findAllStudents')
+		universityDao
+			.findAllStudents()
+			.then(students => res.send(students))
 	}
+
 	function findStudentById(req, res) {
-		res.json(
-			universityDao.findStudentById(req.params['sid'])
-		)
+		var studentId = req.params['sid'];
+		universityDao
+			.findStudentById(studentId)
+			.then(student => res.json(student))
 	}
+
+	function findStudentByUsername(req, res) {
+		var username = req.params['username'];
+		universityDao
+			.findStudentByUsername(username)
+			.then(student => res.json(student))
+	}
+
 	function updateStudent(req, res) {
-		var sid = req.params['sid'];
-		var student = req.body;
-		res.json(universityDao.updateStudent(sid, student))
+		var studentId = req.params['sid'];
+		var studentUpdates = req.body
+		universityDao
+			.updateStudent(studentId, studentUpdates)
+			.then(status => res.json(status))
 	}
+
+	function deleteStudent(req, res) {
+		var studentId = req.params['sid'];
+		universityDao
+			.deleteStudent(studentId)
+			.then(status => res.json(status))
+	}
+
 	function createQuestion(req, res) {
 		var question = req.body;
-		res.json(universityDao.createQuestion(question))
+		universityDao
+			.createQuestion(question)
+			.then(response => res.send(response))
 	}
+
 	function deleteQuestion(req, res) {
 		var qid = req.params['qid'];
-		res.json(universityDao.deleteQuestion(qid))
+		universityDao
+			.deleteQuestion(qid)
+			.then(status => res.json(status))
 	}
+
 	function findAllQuestions(req, res) {
-		res.json(universityDao.findAllQuestions());
+		universityDao
+			.findAllQuestions()
+			.then(questions => res.send(questions))
 	}
+
 	function findQuestionById(req, res) {
-		res.json(
-			universityDao.findQuestionById(req.params['qid'])
-		)	
+		universityDao
+			.findQuestionById(req.params['qid'])
+			.then(question => res.json(question))
 	}
+
 	function updateQuestion(req, res) {
 		var qid = req.params['qid'];
 		var question = req.body;
-		res.json(universityDao.updateQuestion(qid,question))
+		universityDao
+			.updateQuestion(qid, question)
+			.then(status => res.json(status))
 	}
+
 	function createAnswer(req, res){
 		var answer = req.body;
-		res.json(universityDao.createAnswer(req.params['sid'],req.params['qid'],answer))
+		universityDao.createAnswer(req.params['sid'],req.params['qid'],answer).then(response=> res.json(response))
 	}
+
 	function findAllAnswers(req, res) {
-		res.json(universityDao.findAllAnswers());
+		universityDao
+			.findAllAnswers()
+			.then(answers => res.send(answers))
 	}
+
 	function findAnswerById(req, res) {
-		res.json(
-			universityDao.findAnswerById(req.params['aid'])
-		)	
+		universityDao
+			.findAnswerById(req.params['aid'])
+			.then(answer => res.json(answer))	
 	}
+
 	function findAnswersByStudent(req, res){
-		res.json(
-			universityDao.findAnswersByStudent(req.params['sid'])
-		)
+		universityDao
+			.findAnswersByStudent(req.params['sid'])
+			.then(answer => res.json(answer))
 	}
+
 	function findAnswersByQuestion(req, res){
-		res.json(
-			universityDao.findAnswersByQuestion(req.params['qid'])
-		)
+		universityDao
+			.findAnswersByQuestion(req.params['qid'])
+			.then(answer => res.json(answer))
 	}
+
 	function findAnswersByQidSid(req, res){
-		res.json(
-			universityDao.findAnswersByQidSid(req.params['sid'],req.params['qid'])
-		)
+		universityDao
+			.findAnswersByQidSid(req.params['sid'],req.params['qid'])
+			.then(answer => res.json(answer))
 	}
+
 	app.post("/api/student", createStudent);
 	app.delete("/api/student/:sid", deleteStudent);
 	app.get("/api/student", findAllStudents);

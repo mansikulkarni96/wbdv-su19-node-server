@@ -1,67 +1,91 @@
 var students = require('../data/students.json');
 var questions = require('../data/questions.json');
 var answers = require('../data/answers.json');
+
+var studentModel = require('../models/student.model.server');
+var questionModel = require('../models/question.model.server');
+var answerModel = require('../models/answer.model.server');
+
 function createStudent(student) {
-	students.push(student);
-	return students;
+	return studentModel.create(student)
 }
-function deleteStudent(sid) {
-	var index = students.findIndex(student => student._id == sid)
-	students.splice(index, 1)
-	return students;
-}
+
 function findAllStudents() {
-	return students;
+	// retrieve all student docs
+	// equivalent to select * from students -- no where clause
+	return studentModel.find()
 }
-function findStudentById(sid) {
-	return students.find(student => student._id == sid)
+
+function findStudentById(studentId) {
+	// studentModel.find({_id: userId})
+	// equivalent select * from students where _id=studentId
+	// return studentModel.find({_id: studentId})
+	return studentModel.findById(studentId)
 }
-function updateStudent(sid, student) {
-	var index = students.findIndex(stud => stud._id === sid)
-	students[index] = student
-	return students[index];
+
+function findStudentByUsername(username) {
+	// return studentModel.find({username: username})
+	return studentModel.findOne({username: username})
 }
+
+function updateStudent(studentId, studentUpdates) {
+	return studentModel.update(
+		{_id: studentId},
+		{$set: studentUpdates}
+	)
+}
+
+function deleteStudent(studentId) {
+	return studentModel.remove({_id: studentId})
+}
+
 function createQuestion(question) {
-	questions.push(question);
-	return questions;
+	return questionModel.create(question)
 }
+
 function findAllQuestions() {
-	return questions;
+	return questionModel.find();
 }
 function findQuestionById(qid) {
-	return questions.find(question => question._id == qid)
+	return questionModel.findById(qid)
 }
 function deleteQuestion(qid) {
-	var index = questions.findIndex(question => question._id == qid)
-	questions.splice(index, 1)
-	return questions;
+	return questionModel.remove({_id: qid})
 }
+
 function updateQuestion(qid, question) {
-	var index = questions.findIndex(quest => quest._id === qid)
-	questions[index] = question
-	return questions[index];
+	return questionModel.update(
+		{_id: qid},
+		{$set: question}
+	)
 }
+
 function createAnswer(sid, qid, answer){
 	answer['student'] = sid
 	answer['question'] = qid
-	answers.push(answer);
-	return answers;
+	return answerModel.create(answer);
 }
+
 function findAllAnswers() {
-	return answers;
+	return answerModel.find()
 }
+
 function findAnswerById(aid) {
-	return answers.find(answer => answer._id == aid)
+	return answerModel.findById(aid)
 }
+
 function findAnswersByStudent(sid){
-	return answers.filter(answer => answer.student === sid)
+	return answerModel.find({student: sid})
 }
+
 function findAnswersByQuestion(qid){
-	return answers.filter(answer => answer.question === qid)
+	return answerModel.find({question: qid})
 }
+
 function findAnswersByQidSid(sid, qid){
-	return answers.filter(answer => answer.question == qid && answer.student == sid)
+	return answerModel.find({student: sid, question: qid})
 }
+
 module.exports = {
 	createStudent,
 	deleteStudent,
