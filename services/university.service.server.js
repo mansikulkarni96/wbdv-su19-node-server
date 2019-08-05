@@ -117,12 +117,14 @@ module.exports = function (app) {
 			.then(answer => res.json(answer))
 	}
 
-	function populateDatabase(){
+	function populateDatabase(req,res){
+		res.send('Data')
 		universityDao
 			.populateDatabase()
 	}
 
-	function truncateDatabase(){
+	function truncateDatabase(req,res){
+		res.send('Deleting records')
 		universityDao
 			.truncateDatabase()
 	}

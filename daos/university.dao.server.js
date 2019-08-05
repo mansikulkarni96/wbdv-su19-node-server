@@ -104,7 +104,7 @@ for(let i=0; i<questions.length; i++){
 	questionModel.create(questions[i])
 }
 for(let i=0; i<answers.length; i++){
-	answerModel.create(students[i])
+	answerModel.create(answers[i])
 }
 }
 
