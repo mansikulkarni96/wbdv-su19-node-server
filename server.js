@@ -8,6 +8,7 @@ if(process.env.MLAB_USERNAME_WEBDEV) {
    var password = process.env.MLAB_PASSWORD_WEBDEV;
    connectionString = 'mongodb://' + username + ':' + password;
    connectionString += '@ds019638.mlab.com:19638/heroku_674vnd6l';
+   mongoose.connect(connectionString, {useNewUrlParser: true});
 }
 
 //mongoose.connect('mongodb://localhost:27017/wbdv-su19', {useNewUrlParser: true});
