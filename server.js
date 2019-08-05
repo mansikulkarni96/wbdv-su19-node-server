@@ -2,7 +2,14 @@ var express = require('express')
 var app = express()
 var mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/wbdv-su19', {useNewUrlParser: true});
+
+var connectionString = 'mongodb://127.0.0.1:27017/test';
+   var username = 'mansi96';
+   var password = 'mansi1234';
+   connectionString = 'mongodb://' + username + ':' + password;
+   connectionString += '@ds019638.mlab.com:19638/heroku_674vnd6l';
+
+//mongoose.connect('mongodb://localhost:27017/wbdv-su19', {useNewUrlParser: true});
 
 var pageSchema = mongoose.Schema({
 	title: String
