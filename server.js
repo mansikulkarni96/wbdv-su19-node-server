@@ -3,7 +3,7 @@ var app = express()
 var mongoose = require('mongoose')
 
 
-var connectionString = 'mongodb://127.0.0.1:27017/test';
+var connectionString = 'mongodb://127.0.0.1:27017/wbdv-su19';
    var username = 'mansi96';
    var password = 'mansi1234';
    connectionString = 'mongodb://' + username + ':' + password;
