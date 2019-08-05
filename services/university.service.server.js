@@ -120,13 +120,11 @@ module.exports = function (app) {
 	function populateDatabase(){
 		universityDao
 			.populateDatabase()
-			.then('Populating records')
 	}
 
 	function truncateDatabase(){
 		universityDao
 			.truncateDatabase()
-			.then('Deleting records')
 	}
 
 	app.post("/api/student", createStudent);
