@@ -123,7 +123,7 @@ module.exports = function (app) {
 			.then('Populating records')
 	}
 
-	function truncateDatabase{
+	function truncateDatabase(){
 		universityDao
 			.truncateDatabase()
 			.then('Deleting records')
