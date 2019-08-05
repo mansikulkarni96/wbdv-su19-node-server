@@ -3,13 +3,9 @@ var app = express()
 var mongoose = require('mongoose')
 
 
-if(process.env.MLAB_USERNAME_WEBDEV) {
-   var username = process.env.MLAB_USERNAME_WEBDEV;
-   var password = process.env.MLAB_PASSWORD_WEBDEV;
-   connectionString = 'mongodb://' + username + ':' + password;
-   connectionString += '@ds019638.mlab.com:19638/heroku_674vnd6l';
-   mongoose.connect(connectionString, {useNewUrlParser: true});
-}
+
+mongoose.connect('mongodb://heroku_674vnd6l:qvie32tkbjru83t21rsoml39ml@ds019638.mlab.com:19638/heroku_674vnd6l',
+ {useNewUrlParser: true});
 
 //mongoose.connect('mongodb://localhost:27017/wbdv-su19', {useNewUrlParser: true});
 
