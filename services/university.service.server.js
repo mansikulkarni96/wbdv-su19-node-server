@@ -117,6 +117,18 @@ module.exports = function (app) {
 			.then(answer => res.json(answer))
 	}
 
+	function populateDatabase(){
+		universityDao
+			.populateDatabase()
+			.then('Populating records')
+	}
+
+	function truncateDatabase{
+		universityDao
+			.truncateDatabase()
+			.then('Deleting records')
+	}
+
 	app.post("/api/student", createStudent);
 	app.delete("/api/student/:sid", deleteStudent);
 	app.get("/api/student", findAllStudents);
@@ -134,5 +146,6 @@ module.exports = function (app) {
 	app.get("/api/question/:qid/answer", findAnswersByQuestion);
 	app.get("/api/student/:sid/question/:qid/answer", findAnswersByQidSid)
 	app.get("/api/question/:qid/student/:sid/answer", findAnswersByQidSid)
-
+	app.get("/api/all", truncateDatabase)
+	app.get("/api/populate", populateDatabase)
 }

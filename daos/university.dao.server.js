@@ -95,6 +95,25 @@ function removeAllQuizWidgets(){
 	return quizWidgetModel.deleteMany({}).exec()
 }
 
+function populateDatabase(){
+
+for(let i=0; i<students.length; i++){
+	studentModel.create(students[i])
+}
+for(let i=0; i<questions.length; i++){
+	questionModel.create(questions[i])
+}
+for(let i=0; i<answers.length; i++){
+	answerModel.create(students[i])
+}
+}
+
+function truncateDatabase(){
+studentModel.remove().exec()
+questionModel.remove().exec()
+answerModel.remove().exec()
+}
+
 module.exports = {
 	createStudent,
 	deleteStudent,
@@ -113,5 +132,7 @@ module.exports = {
 	findAnswersByQuestion,
 	findAnswersByQidSid,
 	createQuizWidget,
-	removeAllQuizWidgets
+	removeAllQuizWidgets,
+	populateDatabase,
+	truncateDatabase
 };
