@@ -9,7 +9,7 @@ module.exports = function (app) {
 		console.log(student)
 		universityDao
 			.createStudent(student)
-			.findAllStudents()
+		universityDao.findAllStudents()
 			.then(response => res.send(response))
 	}
 
