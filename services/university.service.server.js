@@ -9,7 +9,6 @@ module.exports = function (app) {
 		console.log(student)
 		universityDao
 			.createStudent(student)
-		universityDao.findAllStudents()
 			.then(response => res.send(response))
 	}
 
@@ -53,7 +52,6 @@ module.exports = function (app) {
 		var question = req.body;
 		universityDao
 			.createQuestion(question)
-			.findAllQuestions()
 			.then(response => res.send(response))
 	}
 
@@ -86,8 +84,7 @@ module.exports = function (app) {
 
 	function createAnswer(req, res){
 		var answer = req.body;
-		universityDao.createAnswer(req.params['sid'],req.params['qid'],answer)
-		.findAllAnswers().then(response=> res.json(response))
+		universityDao.createAnswer(req.params['sid'],req.params['qid'],answer).then(response=> res.json(response))
 	}
 
 	function findAllAnswers(req, res) {
