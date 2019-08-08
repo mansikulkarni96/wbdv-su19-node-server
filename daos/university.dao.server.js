@@ -2,10 +2,10 @@ var students = require('../data/students.json');
 var questions = require('../data/questions.json');
 var answers = require('../data/answers.json');
 
-var studentModel = require('../models/student.model.server');
-var questionModel = require('../models/question.model.server');
-var answerModel = require('../models/answer.model.server');
-var quizWidgetModel = require('../models/quiz-widget.model.server')
+var studentModel = require('../data/models/student.model.server');
+var questionModel = require('../data/models/question.model.server');
+var answerModel = require('../data/models/answer.model.server');
+var quizWidgetModel = require('../data/models/quiz-widget.model.server')
 
 function createStudent(student) {
 	return studentModel.create(student)
