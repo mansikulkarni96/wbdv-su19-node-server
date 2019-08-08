@@ -8,8 +8,7 @@ var answerModel = require('../models/answer.model.server');
 var quizWidgetModel = require('../models/quiz-widget.model.server')
 
 function createStudent(student) {
-	studentModel.create(student)
-	return studentModel.find()
+	return studentModel.create(student)
 }
 
 function findAllStudents() {
@@ -42,8 +41,7 @@ function deleteStudent(studentId) {
 }
 
 function createQuestion(question) {
-	questionModel.create(question)
-	return questionModel.find();
+	return questionModel.create(question)
 }
 
 function findAllQuestions() {
@@ -66,8 +64,7 @@ function updateQuestion(qid, question) {
 function createAnswer(sid, qid, answer){
 	answer['student'] = sid
 	answer['question'] = qid
-	answerModel.create(answer);
-	return answerModel.find();
+	return answerModel.create(answer);
 }
 
 function findAllAnswers() {
